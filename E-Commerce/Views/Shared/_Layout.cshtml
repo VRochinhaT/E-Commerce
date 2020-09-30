@@ -54,7 +54,7 @@
                             </div>
                             
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a asp-area="" asp-controller="Login" asp-action="Index"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </div>
                     </div>
@@ -103,19 +103,10 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>Departamentos</span>
+                            <span>Utilidades</span>
                         </div>
                         <ul>
-                            <li><a href="#">Tipo Produto 1</a></li>
-                            <li><a href="#">Tipo Produto 2</a></li>
-                            <li><a href="#">Tipo Produto 3</a></li>
-                            <li><a href="#">Tipo Produto 4</a></li>
-                            <li><a href="#">Tipo Produto 5</a></li>
-                            <li><a href="#">Tipo Produto 6</a></li>
-                            <li><a href="#">Tipo Produto 7</a></li>
-                            <li><a href="#">Tipo Produto 8</a></li>
-                            <li><a href="#">Tipo Produto 9</a></li>
-                            <li><a href="#">Tipo Produto 10</a></li>
+                            <li><a a asp-area="" asp-controller="Add" asp-action="Product">Cadastrar Produto</a></li>
                         </ul>
                     </div>
                 </div>
@@ -221,7 +212,7 @@
     <!-- Js Plugins -->
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.nice-select.min.js"></script>
+    
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/jquery.slicknav.js"></script>
     <script src="~/js/mixitup.min.js"></script>

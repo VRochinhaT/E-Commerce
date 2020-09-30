@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3>Cadastrar Produto</h3>
+    </div>
+
+    <form>
+        <div class="card-body">
+            <div class="form-group">
+                <label>ID</label>
+                <input class="form-control" placeholder="Digite o ID aqui" name="id">
+            </div>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" placeholder="Digite o Nome aqui" name="name">
+            </div>
+
+            <div class="form-group">
+                <label>Categorias</label>
+                <select class="form-control" name="category">
+                    <option>Categoria 1</option>
+                    <option>Categoria 2</option>
+                    <option>Categoria 3</option>
+                    <option>Categoria 4</option>
+                    <option>Categoria 5</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Preço de Venda</label>
+                <input class="form-control" placeholder="Digite o Valor" name="sell_price">
+            </div>
+
+            <div class="form-group">
+                <label>Preço de Compra</label>
+                <input class="form-control" placeholder="Digite o Valor" name="buy_price">
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="site-btn">Cadastrar</button>
+        </div>
+    </form>
+</div>
