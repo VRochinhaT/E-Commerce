@@ -3,6 +3,11 @@
     ViewData["Title"] = "Login";
 }
 
+@section Scripts
+{
+    <script src="~/js/views/login/Index.js"></script>
+}
+
 <div class="login-box">
     <div class="login-logo">
         <a href="../../index2.html"><b>Login</b></a>
@@ -14,7 +19,7 @@
 
             <form>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Usuário" name="user">
+                    <input type="email" class="form-control" placeholder="Usuário" id="email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -22,19 +27,23 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Senha" name="password">
+                    <input type="password" class="form-control" placeholder="Senha" id="password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
                 </div>
-                <div class="row">                    
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="button" class="btn btn-primary btn-block" value="Entrar" onclick="index.login()">
                     </div>
                 </div>
             </form>
+
+            <div class="row mt-3 alert alert-danger" id="divError" style="display: none">
+                
+            </div>
 
             <div class="social-auth-links text-center mb-3">
                 <p>- OU -</p>

@@ -1,6 +1,11 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Insert";
+}
+
+@section Scripts
+{ 
+    <script src="~/js/views/Insert/Product.js"></script>
 }
 
 <div class="card card-primary">
@@ -12,17 +17,17 @@
         <div class="card-body">
             <div class="form-group">
                 <label>ID</label>
-                <input class="form-control" placeholder="Digite o ID aqui" name="id">
+                <input class="form-control" placeholder="Digite o ID aqui" id="id">
             </div>
 
             <div class="form-group">
                 <label>Nome</label>
-                <input class="form-control" placeholder="Digite o Nome aqui" name="name">
+                <input class="form-control" placeholder="Digite o Nome aqui" id="name">
             </div>
 
             <div class="form-group">
                 <label>Categorias</label>
-                <select class="form-control" name="category">
+                <select class="form-control" id="category">
                     <option>Categoria 1</option>
                     <option>Categoria 2</option>
                     <option>Categoria 3</option>
@@ -33,18 +38,20 @@
 
             <div class="form-group">
                 <label>Preço de Venda</label>
-                <input class="form-control" placeholder="Digite o Valor" name="sell_price">
+                <input class="form-control" id="sell_price" type="number" min="0" step="0.50" placeholder="0.00">
             </div>
 
             <div class="form-group">
                 <label>Preço de Compra</label>
-                <input class="form-control" placeholder="Digite o Valor" name="buy_price">
+                <input class="form-control" id="buy_price" type="number" min="0" step="0.50" placeholder="0.00">
+            </div>
+
+            <div class="row mt-3 alert alert-danger" id="divError" style="display: none">
             </div>
         </div>
         <!-- /.card-body -->
-
         <div class="card-footer">
-            <button type="submit" class="site-btn">Cadastrar</button>
+            <input type="button" class="site-btn" value="Cadastrar" onclick="product.insert()">
         </div>
     </form>
 </div>

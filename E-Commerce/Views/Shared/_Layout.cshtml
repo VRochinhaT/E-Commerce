@@ -23,6 +23,15 @@
     <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
 
+    <script src="~/js/views/HTTPClient.js"></script>
+
+    <style>
+        .site-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -106,7 +115,13 @@
                             <span>Utilidades</span>
                         </div>
                         <ul>
-                            <li><a a asp-area="" asp-controller="Add" asp-action="Product">Cadastrar Produto</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Product">Cadastrar Produto</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
+                            <li><a a asp-area="" asp-controller="Insert" asp-action="Index">Cadastrar</a></li>
                         </ul>
                     </div>
                 </div>
@@ -202,7 +217,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="~/img/payment-item.png" alt=""></div>
                     </div>
                 </div>
             </div>

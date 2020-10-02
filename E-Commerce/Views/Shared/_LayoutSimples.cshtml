@@ -17,6 +17,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <script src="~/js/views/HTTPClient.js"></script>
+
+    <style>
+        input:hover {
+            opacity: 0.8;
+        }
+    </style>
+
     @RenderSection("Styles", required: false)
 </head>
 <body class="hold-transition login-page">
@@ -32,6 +40,8 @@
     <script src="~/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/template/dist/js/adminlte.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>
