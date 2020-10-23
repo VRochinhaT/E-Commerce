@@ -27,6 +27,10 @@ namespace E_Commerce.Models
 
         public bool Insert()
         {
+            DAL.UserDAL ud = new DAL.UserDAL();
+            User u = new User();
+            ud.Insert(u);
+
             return true;
         }
 
