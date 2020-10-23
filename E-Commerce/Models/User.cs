@@ -22,16 +22,25 @@ namespace E_Commerce.Models
 
         public bool AuthentifyPassword(string email, string password)
         {
-            return email == "a@a.com" && password == "123";
+            DAL.UserDAL ud = new DAL.UserDAL();
+
+            return ud.AuthentifyUser(email, password);
+        }
+
+        public bool Select(int id)
+        {
+            DAL.UserDAL ud = new DAL.UserDAL();
+
+            bool ok = ud.Select(id, this);
+
+            return ok;
         }
 
         public bool Insert()
         {
             DAL.UserDAL ud = new DAL.UserDAL();
-            User u = new User();
-            ud.Insert(u);
 
-            return true;
+            return ud.Insert(this);
         }
 
         /*

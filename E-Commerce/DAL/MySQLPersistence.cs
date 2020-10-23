@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -18,7 +20,7 @@ namespace E_Commerce.DAL
         public MySQLPersistence()
         {
 
-            _conection = new MySqlConnection();
+            _conection = new MySqlConnection("Server = den1.mysql6.gear.host; Database = ecommercelp4; Uid = ecommercelp4; Pwd = @12345;");
             _cmd = _conection.CreateCommand();
         }
 
@@ -57,6 +59,51 @@ namespace E_Commerce.DAL
             Close();
 
             return qtnLinhasAfetadas;
+        }
+
+        public object ExecuteSelectScalar(string select, Dictionary<string, object> param = null)
+        {
+            object valor = null;
+
+            Open();
+            _cmd.CommandText = select;
+
+            if (param != null)
+            {
+                foreach (var p in param)
+                {
+                    _cmd.Parameters.AddWithValue(p.Key, p.Value);
+                }
+            }
+
+            valor = _cmd.ExecuteScalar();
+
+            Close();
+
+            return valor;
+        }
+
+        public DbDataReader ExecuteSelect(string select, Dictionary<string, object> param = null)
+        {
+            Open();
+            _cmd.CommandText = select;
+
+            if (param != null)
+            {
+                foreach (var p in param)
+                {
+                    _cmd.Parameters.AddWithValue(p.Key, p.Value);
+                }
+            }
+
+            /*
+            //Tabela em memoria
+            DataTable dt = new DataTable();
+            dt.Load(_cmd.ExecuteReader());*/
+
+            MySqlDataReader reader = _cmd.ExecuteReader();
+
+            return reader;
         }
     }
 }

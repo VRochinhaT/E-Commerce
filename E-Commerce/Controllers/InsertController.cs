@@ -22,20 +22,28 @@ namespace E_Commerce.Controllers
         {
             bool operation = false;
             string msg = "";
-            string id = data.GetProperty("id").ToString();
-            string name = data.GetProperty("name").ToString();
+            //string id = data.GetProperty("id").ToString();
+            
+            /*string name = data.GetProperty("name").ToString();
             string category = data.GetProperty("category").ToString();
             string sellPrice = data.GetProperty("sellPrice").ToString();
-            string buyPrice = data.GetProperty("buyPrice").ToString();
+            string buyPrice = data.GetProperty("buyPrice").ToString();*/
 
-            if (true)
+            Models.Product prod = new Models.Product();
+
+            prod.Name = data.GetProperty("name").ToString();
+            prod.Category = data.GetProperty("category").ToString();
+            prod.SellPrice = Convert.ToDecimal(data.GetProperty("sellPrice").ToString());
+            prod.BuyPrice = Convert.ToDecimal(data.GetProperty("buyPrice").ToString());
+
+            if (prod.Insert())
             {
                 operation = true;
                 msg = "Produto cadastrado com sucesso";
             }
             else
             {
-                //msg = "Dados inválidos";
+                msg = "Dados inválidos";
             }
 
             return Json(new

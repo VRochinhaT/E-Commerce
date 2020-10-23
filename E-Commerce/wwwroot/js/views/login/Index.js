@@ -32,6 +32,7 @@ let index = {
                     //sucesso
                     if (obj.operation) {
                         window.location.href = "home"; //controller/action
+                        alert(obj.msg);
                     }
                     else {
                         alert(obj.msg);

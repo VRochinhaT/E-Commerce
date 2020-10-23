@@ -15,7 +15,6 @@ namespace E_Commerce.Models
 
         public Product()
         {
-
         }
 
         public int Id { get => _id; set => _id = value; }
@@ -23,5 +22,12 @@ namespace E_Commerce.Models
         public string Category { get => _category; set => _category = value; }
         public decimal SellPrice { get => _sellPrice; set => _sellPrice = value; }
         public decimal BuyPrice { get => _buyPrice; set => _buyPrice = value; }
+
+        public bool Insert()
+        {
+            DAL.ProductDAL pd = new DAL.ProductDAL();
+
+            return pd.Insert(this);
+        }
     }
 }
