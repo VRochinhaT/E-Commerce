@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.Controllers
 {
+    [Authorize("CookieAuth")]
+
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -21,6 +24,11 @@ namespace E_Commerce.Controllers
             return View();
         }
         public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult JSStorage()
         {
             return View();
         }

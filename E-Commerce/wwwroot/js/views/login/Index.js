@@ -30,7 +30,7 @@ let index = {
                 .then(function (obj) {
                     //sucesso
                     if (obj.operation) {
-                        window.location.href = "home"; //controller/action
+                        window.location.href = "/home"; //controller/action
                         alert(obj.msg);
                     }
                     else {
