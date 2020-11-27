@@ -21,5 +21,15 @@ namespace E_Commerce.Models.Tests
             bool ok = prod.Insert();
             Assert.IsTrue(ok);
         }
+
+        [TestMethod()]
+        public void SearchTest()
+        {
+            Models.Product p = new Product();
+
+            var list = p.Search("%");
+
+            Assert.IsTrue(list.Count > 0);
+        }
     }
 }

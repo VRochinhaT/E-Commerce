@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutSimples.cshtml";
+    ViewData["Title"] = "Search Product";
+}
+
+@section Scripts
+{
+    <script src="~/js/views/Insert/Product.js"></script>
+}
+
+<h1>Pesquisar Produto</h1>
+
+<div>
+    <input type="search" id="txtSearch"/>
+    <input type="button" value="Pesquisar" onclick="product.executeSearch()" />
+</div>
+
+<br />
+
+<table id="tableResult" style="display:none">
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tbodyResult">
+    </tbody>
+</table>

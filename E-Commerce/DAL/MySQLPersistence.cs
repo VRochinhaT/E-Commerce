@@ -10,29 +10,57 @@ namespace E_Commerce.DAL
 {
     public class MySQLPersistence
     {
-        public MySqlConnection _conection { get; set; }
+        public MySqlConnection _connection { get; set; }
         public MySqlCommand _cmd { get; set; }
+        public MySqlTransaction _trans { get; set; }
 
         int _lastId;
         public int LastId { get => _lastId; set => _lastId = value; }
 
-
-        public MySQLPersistence()
+        bool _dbConnectionPersistence = false;
+        public MySQLPersistence(bool dbConnectionPersistence = false)
         {
-
-            _conection = new MySqlConnection("Server = den1.mysql6.gear.host; Database = ecommercelp4; Uid = ecommercelp4; Pwd = @12345;");
-            _cmd = _conection.CreateCommand();
+            _dbConnectionPersistence = dbConnectionPersistence;
+            _connection = new MySqlConnection("Server = den1.mysql6.gear.host; Database = ecommercelp4; Uid = ecommercelp4; Pwd = @12345;");
+            _cmd = _connection.CreateCommand();
         }
 
         public void Open()
         { 
-            if(_conection.State != System.Data.ConnectionState.Open)
+            if(_connection.State != System.Data.ConnectionState.Open)
             {
-                _conection.Open();
+                _connection.Open();
             }
         }
 
-        public void Close() { _conection.Close(); }
+        public void Close() { _connection.Close(); }
+
+        public void StartTransaction()
+        {
+            Open();
+            _trans = _connection.BeginTransaction();
+            _cmd.Transaction = _trans;
+        }
+
+        public void TransactionCommit()
+        {
+            if(_trans != null)
+            {
+                _trans.Commit();
+                _trans.Dispose();
+                _trans = null;
+            }
+        }
+
+        public void TransactionRollback()
+        {
+            if (_trans != null)
+            {
+                _trans.Rollback();
+                _trans.Dispose();
+                _trans = null;
+            }
+        }
 
         /// <summary>
         /// Função que executa INSERT, DELETE, INSERT e Store Procedure
@@ -56,7 +84,8 @@ namespace E_Commerce.DAL
 
             _lastId = (int)_cmd.LastInsertedId;
 
-            Close();
+            if(!_dbConnectionPersistence)
+                Close();
 
             return qtnLinhasAfetadas;
         }
@@ -78,7 +107,8 @@ namespace E_Commerce.DAL
 
             valor = _cmd.ExecuteScalar();
 
-            Close();
+            if (!_dbConnectionPersistence)
+                Close();
 
             return valor;
         }
@@ -104,6 +134,11 @@ namespace E_Commerce.DAL
             MySqlDataReader reader = _cmd.ExecuteReader();
 
             return reader;
+        }
+
+        public void CleanParam()
+        {
+            _cmd.Parameters.Clear();
         }
     }
 }

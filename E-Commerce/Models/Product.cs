@@ -13,6 +13,8 @@ namespace E_Commerce.Models
         decimal _sellPrice;
         decimal _buyPrice;
 
+        DAL.ProductDAL pd = new DAL.ProductDAL();
+
         public Product()
         {
         }
@@ -25,9 +27,12 @@ namespace E_Commerce.Models
 
         public bool Insert()
         {
-            DAL.ProductDAL pd = new DAL.ProductDAL();
-
             return pd.Insert(this);
+        }
+
+        public List<Product> Search(string name)
+        {
+            return pd.Search(name);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿//object JS
 let index = {
-
     login: function () {
         //var email = document.getElementById("email");
         //var password = document.getElementById("password");

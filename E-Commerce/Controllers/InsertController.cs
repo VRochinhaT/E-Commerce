@@ -18,6 +18,20 @@ namespace E_Commerce.Controllers
             return View();
         }
 
+        public IActionResult SearchProduct()
+        {
+            return View();
+        }
+
+       public IActionResult ExecuteSearch(string q)
+        {
+            Models.Product p = new Models.Product();
+            List<Models.Product> datas = p.Search(q);
+
+
+            return Json(datas);
+        }
+
         public IActionResult Insert([FromBody] System.Text.Json.JsonElement data)
         {
             bool operation = false;

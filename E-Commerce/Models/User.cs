@@ -12,6 +12,8 @@ namespace E_Commerce.Models
         string _email;
         string _password;
 
+        DAL.UserDAL ud = new DAL.UserDAL();
+
         public int Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
         public string Email { get => _email; set => _email = value; }
@@ -22,18 +24,23 @@ namespace E_Commerce.Models
 
         public bool AuthentifyPassword(string email, string password)
         {
-            DAL.UserDAL ud = new DAL.UserDAL();
+            //DAL.UserDAL ud = new DAL.UserDAL();
 
             return ud.AuthentifyUser(email, password);
         }
 
         public bool Select(int id)
         {
-            DAL.UserDAL ud = new DAL.UserDAL();
+            //DAL.UserDAL ud = new DAL.UserDAL();
 
             bool ok = ud.Select(id, this);
 
             return ok;
+        }
+
+        public List<User> Search(string name)
+        {
+            return ud.Search(name);
         }
 
         public bool Insert()

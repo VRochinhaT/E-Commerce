@@ -14,7 +14,7 @@ namespace E_Commerce.Models.Tests
         {
             Models.User user = new User();
             user.Id = 0;
-            user.Name = "Vitor";
+            user.Name = "Ro";
             user.Email = "vitor@rocha.com";
             user.Password = "123456";
 
@@ -40,6 +40,16 @@ namespace E_Commerce.Models.Tests
             bool ok = user.Select(1);
 
             Assert.IsTrue(ok);
+        }
+
+        [TestMethod()]
+        public void SearchTest()
+        {
+            Models.User user = new User();
+
+            var list = user.Search("%");
+
+            Assert.IsTrue(list.Count > 0);
         }
     }
 }

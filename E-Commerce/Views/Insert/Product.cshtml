@@ -3,8 +3,22 @@
     ViewData["Title"] = "Insert";
 }
 
+@section Styles {
+    <link href="~/lib/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
+    <style>
+        .fancybox-slide--iframe .fancybox-content {
+            width: 800px;
+            height: 600px;
+            max-width: 80%;
+            max-height: 80%;
+            margin: 0;
+        }
+    </style>
+}
+
 @section Scripts
-{ 
+{
+    <script src="~/lib/fancybox-master/dist/jquery.fancybox.min.js"></script>
     <script src="~/js/views/Insert/Product.js"></script>
 }
 
@@ -15,12 +29,14 @@
 
     <form>
         <div class="card-body">
-            <!-- 
+            <!--
             <div class="form-group">
                 <label>ID</label>
                 <input class="form-control" placeholder="Digite o ID aqui" id="id">
             </div>
             -->
+
+            <input type="hidden" id="id" />
 
             <div class="form-group">
                 <label>Nome</label>
@@ -54,6 +70,10 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <input type="button" class="site-btn" value="Cadastrar" onclick="product.insert()">
+        </div>
+
+        <div class="card-footer">
+            <input type="button" class="site-btn" value="Pesquisar" onclick="product.search()">
         </div>
     </form>
 </div>
